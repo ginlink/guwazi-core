@@ -1,5 +1,4 @@
 import { Guawazi } from '..'
-import _ from 'lodash'
 
 describe('console plugin test', () => {
   it('console plugin run normally', () => {

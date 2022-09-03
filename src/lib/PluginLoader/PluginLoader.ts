@@ -9,6 +9,7 @@ export class PluginLoader {
 
   constructor(ctx: Guawazi) {
     this.ctx = ctx
+    this.init()
   }
 
   init() {
@@ -71,7 +72,7 @@ export class PluginLoader {
 
   getPlugin(name: string): PluginWrapper {
     const pluginPath = path.join(this.ctx.baseDir, 'node_modules', name)
-    return require(pluginPath)(this.ctx)
+    return require(pluginPath).default
   }
 
   resolvePluginPath(name: string) {
