@@ -5,7 +5,7 @@ import { PluginWrapper, setCurrentPluginName } from '../LifecyclePlugins'
 
 export class PluginLoader {
   ctx: Guawazi
-  list: string[] = []
+  list: Set<string> = new Set()
 
   constructor(ctx: Guawazi) {
     this.ctx = ctx
@@ -55,7 +55,7 @@ export class PluginLoader {
   }
 
   registerPlugin(name: string) {
-    this.list.push(name)
+    this.list.add(name)
     setCurrentPluginName(name)
 
     const pluginConfig = this.ctx.getConfig<boolean>(`guwaziPlugins.${name}`)

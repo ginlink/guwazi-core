@@ -10,6 +10,8 @@ import { LifecyclePlugins, setCurrentPluginName } from '../lib/LifecyclePlugins'
 import { PluginLoader } from '../lib/PluginLoader'
 import { Lifecycle } from './Lifecycle'
 import { consolePluginWrapper } from '../plugins/console'
+import { Commander } from '../lib/Commander'
+import { PluginHandler } from '../lib/PluginHandler'
 
 export class Guawazi extends EventEmitter implements IGuwazi {
   private db!: DB
@@ -20,8 +22,14 @@ export class Guawazi extends EventEmitter implements IGuwazi {
   baseDir!: string
   log: Logger
   helper: Helper
+  cmd: Commander
+  pluginHandler: PluginHandler
 
   input: any
+
+  get pluginLoader(): PluginLoader {
+    return this._pluginLoader
+  }
 
   constructor(configPath = '') {
     super()
@@ -35,6 +43,8 @@ export class Guawazi extends EventEmitter implements IGuwazi {
       translatePlugins: new LifecyclePlugins('translatePlugins'),
       afterTranslatePlugins: new LifecyclePlugins('afterTranslatePlugins')
     }
+    this.cmd = new Commander(this)
+    this.pluginHandler = new PluginHandler(this)
 
     this.initConfigPath()
     this.initConfig()
@@ -78,6 +88,18 @@ export class Guawazi extends EventEmitter implements IGuwazi {
   private initConfig() {
     this.db = new DB(this)
     this._config = (this.db.read(true) as unknown) as Config
+  }
+
+  reload() {
+    // load third-party plugins
+    this._pluginLoader.load()
+  }
+
+  registerCommands(): void {
+    if (this.configPath !== '') {
+      // this.cmd.init()
+      // this.cmd.loadCommands()
+    }
   }
 
   getConfig<T = Config>(name?: string): T {
