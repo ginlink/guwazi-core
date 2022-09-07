@@ -1,5 +1,5 @@
 import { Logger } from '../lib/Logger'
-import { Config, Helper, IGuwazi, StringKeyMap } from './types'
+import { Config, Helper, StringKeyMap } from './types'
 import EventEmitter from 'events'
 import fs from 'fs-extra'
 import path from 'path'
@@ -13,7 +13,7 @@ import { consolePluginWrapper } from '../plugins/console'
 import { Commander } from '../lib/Commander'
 import { PluginHandler } from '../lib/PluginHandler'
 
-export class Guawazi extends EventEmitter implements IGuwazi {
+export class Guwazi extends EventEmitter {
   private db!: DB
   private _config!: Config
   private _pluginLoader!: PluginLoader

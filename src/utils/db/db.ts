@@ -1,12 +1,12 @@
 import { JSONStore } from '@picgo/store'
 import { IJSON } from '@picgo/store/dist/types'
-import { IGuwazi } from '../../core'
+import { Guwazi } from '../../core'
 import { IConfig } from './types'
 
 export class DB {
-  private readonly ctx: IGuwazi
+  private readonly ctx: Guwazi
   private readonly db: JSONStore
-  constructor(ctx: IGuwazi) {
+  constructor(ctx: Guwazi) {
     this.ctx = ctx
     this.db = new JSONStore(this.ctx.configPath)
 

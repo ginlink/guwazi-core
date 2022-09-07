@@ -1,10 +1,4 @@
 import { LifecyclePlugins } from '../lib/LifecyclePlugins'
-import { Logger } from '../lib/Logger'
-
-export interface IGuwazi extends NodeJS.EventEmitter {
-  configPath: string
-  log: Logger
-}
 
 export type Config = {
   guwaziPlugins: {

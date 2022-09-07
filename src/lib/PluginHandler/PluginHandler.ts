@@ -1,11 +1,11 @@
-import { Guawazi } from '../../core'
+import { Guwazi } from '../../core'
 import { CMDResult, CMDType, PluginHandlerOptions } from './types'
 import spawn from 'cross-spawn'
 import { BuildInEvent } from '../../types'
 
 export class PluginHandler {
-  private ctx: Guawazi
-  constructor(ctx: Guawazi) {
+  private ctx: Guwazi
+  constructor(ctx: Guwazi) {
     this.ctx = ctx
   }
 

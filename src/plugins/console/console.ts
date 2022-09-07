@@ -1,4 +1,4 @@
-import { Guawazi } from '../../core'
+import { Guwazi } from '../../core'
 import { Plugin, PluginWrapper } from '../../lib/LifecyclePlugins'
 
 const consolePlugin0: Plugin = {
@@ -13,7 +13,7 @@ const consolePlugin1: Plugin = {
 }
 
 export const consolePluginWrapper: PluginWrapper = {
-  register: (ctx: Guawazi) => {
+  register: (ctx: Guwazi) => {
     ctx.helper.beforeTransformPlugins.register('console0', consolePlugin0)
     ctx.helper.transformPlugins.register('console1', consolePlugin1)
   }

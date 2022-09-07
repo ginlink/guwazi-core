@@ -1,13 +1,13 @@
 import path from 'path'
 import fs from 'fs-extra'
-import { Guawazi } from '../../core'
+import { Guwazi } from '../../core'
 import { PluginWrapper, setCurrentPluginName } from '../LifecyclePlugins'
 
 export class PluginLoader {
-  ctx: Guawazi
+  ctx: Guwazi
   list: Set<string> = new Set()
 
-  constructor(ctx: Guawazi) {
+  constructor(ctx: Guwazi) {
     this.ctx = ctx
     this.init()
   }

@@ -1,10 +1,10 @@
-import { Guawazi } from '../../core'
+import { Guwazi } from '../../core'
 
 export type Plugin = {
-  handle: (ctx: Guawazi) => void
+  handle: (ctx: Guwazi) => void
   name?: string
 }
 
 export type PluginWrapper = {
-  register: (ctx: Guawazi) => void
+  register: (ctx: Guwazi) => void
 }

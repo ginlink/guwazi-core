@@ -1,9 +1,9 @@
-import { Guawazi } from '../../core'
+import { Guwazi } from '../../core'
 
 export class Commander {
-  ctx: Guawazi
+  ctx: Guwazi
 
-  constructor(ctx: Guawazi) {
+  constructor(ctx: Guwazi) {
     this.ctx = ctx
   }
 }

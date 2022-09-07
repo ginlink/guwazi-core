@@ -1,11 +1,11 @@
 import EventEmitter from 'events'
-import { Guawazi } from '.'
+import { Guwazi } from '.'
 import { LifecyclePlugins } from '../lib/LifecyclePlugins'
 
 export class Lifecycle extends EventEmitter {
-  private ctx: Guawazi
+  private ctx: Guwazi
 
-  constructor(ctx: Guawazi) {
+  constructor(ctx: Guwazi) {
     super()
     this.ctx = ctx
   }

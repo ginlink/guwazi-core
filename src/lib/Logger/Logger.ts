@@ -1,11 +1,11 @@
 import { ILogArgvType, ILogArgvTypeWithError, ILogColor, ILogger, ILogType, logLevel } from './types'
 import chalk from 'chalk'
-import { IGuwazi } from '../../core'
+import { Guwazi } from '../../core'
 
 export class Logger implements ILogger {
-  guwazi: IGuwazi
+  guwazi: Guwazi
 
-  constructor(ctx: IGuwazi) {
+  constructor(ctx: Guwazi) {
     this.guwazi = ctx
   }
 
