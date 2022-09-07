@@ -3,6 +3,6 @@
     "unused-imports"
   ],
   "rules": {
-    "unused-imports/no-unused-imports": "error"
+    "no-unused-vars": "warn"
   }
 }

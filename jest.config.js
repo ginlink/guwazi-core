@@ -1,5 +1,3 @@
-// module.exports = {
-//   moduleNameMapper: {
-//     "#(.*)": "<rootDir>/node_modules/$1"
-//   }
-// };
+module.exports = {
+  testEnvironment: 'node'
+};
