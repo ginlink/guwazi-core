@@ -131,7 +131,5 @@ export class Guwazi extends EventEmitter {
 
   async translate(input?: string) {
     await this.lifeCycle.start(input)
-
-    this.log.success('translate success')
   }
 }

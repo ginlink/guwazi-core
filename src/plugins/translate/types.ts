@@ -26,3 +26,10 @@ export interface Dict {
 export interface Webdict {
   url: string
 }
+
+export type YoudaoConfig = {
+  appKey: string
+  key: string
+  from: string
+  to: string
+}

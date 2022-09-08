@@ -1,6 +1,7 @@
 import EventEmitter from 'events'
 import { Guwazi } from '.'
 import { LifecyclePlugins } from '../lib/LifecyclePlugins'
+import { BuildInEvent } from '../types'
 
 export class Lifecycle extends EventEmitter {
   private ctx: Guwazi
@@ -20,9 +21,11 @@ export class Lifecycle extends EventEmitter {
       await this.doTranslate()
       await this.afterTranslate()
     } catch (err) {
-      console.log('[err]:', err)
+      this.emit(BuildInEvent.FAILED, err)
+      this.ctx.log.error(err as any)
     }
   }
+
   private async beforeTransform() {
     this.emit('beforeTransform', this.ctx)
     await this.handlePlugins(this.ctx.helper.beforeTransformPlugins)
