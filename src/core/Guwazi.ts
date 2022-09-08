@@ -12,6 +12,8 @@ import { Lifecycle } from './Lifecycle'
 import { consolePluginWrapper } from '../plugins/console'
 import { Commander } from '../lib/Commander'
 import { PluginHandler } from '../lib/PluginHandler'
+import translatesPluginWrapper from '../plugins/translate'
+import axios, { AxiosInstance } from 'axios'
 
 export class Guwazi extends EventEmitter {
   private db!: DB
@@ -24,8 +26,10 @@ export class Guwazi extends EventEmitter {
   helper: Helper
   cmd: Commander
   pluginHandler: PluginHandler
+  axios: AxiosInstance
 
   input: any
+  output: any
 
   get pluginLoader(): PluginLoader {
     return this._pluginLoader
@@ -45,6 +49,9 @@ export class Guwazi extends EventEmitter {
     }
     this.cmd = new Commander(this)
     this.pluginHandler = new PluginHandler(this)
+    this.axios = axios.create({
+      timeout: 5000
+    })
 
     this.initConfigPath()
     this.initConfig()
@@ -57,6 +64,7 @@ export class Guwazi extends EventEmitter {
     // load self plugins
     setCurrentPluginName('guwazi')
     consolePluginWrapper.register(this)
+    translatesPluginWrapper.register(this)
     setCurrentPluginName('')
 
     // load third-party plugins
@@ -121,7 +129,7 @@ export class Guwazi extends EventEmitter {
     })
   }
 
-  translate(input?: string) {
-    this.lifeCycle.start(input)
+  async translate(input?: string) {
+    await this.lifeCycle.start(input)
   }
 }
