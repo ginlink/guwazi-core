@@ -6,7 +6,9 @@
   "typings": "dist/index.d.ts",
   "author": "ginlink",
   "module": "dist/mylib.esm.js",
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
