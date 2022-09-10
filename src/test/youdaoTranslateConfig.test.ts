@@ -1,4 +1,4 @@
-import { Guwazi } from '..'
+import { getConfig, Guwazi } from '..'
 
 describe('plugin test', () => {
   it('show plugin config', async () => {
