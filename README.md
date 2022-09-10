@@ -25,3 +25,10 @@ const myPlugin = {
 export default myPlugin
 ```
 
+### 进度
+
+- [x] 插件系统
+- [ ] GUI配置插件原型、UI、功能
+- [x] 翻译UI
+- [ ] 主界面原型、UI
+

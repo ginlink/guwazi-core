@@ -4,7 +4,7 @@ import youdaoTranslate from './youdao'
 
 const translatesPluginWrapper: PluginWrapper = {
   register(ctx: Guwazi) {
-    ctx.helper.translatePlugins.register('path', youdaoTranslate)
+    ctx.helper.translatePlugins.register('guwazi-plugin-youdao', youdaoTranslate)
   }
 }
 

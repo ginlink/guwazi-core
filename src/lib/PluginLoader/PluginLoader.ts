@@ -6,6 +6,7 @@ import { PluginWrapper, setCurrentPluginName } from '../LifecyclePlugins'
 export class PluginLoader {
   ctx: Guwazi
   list: Set<string> = new Set()
+  fullList: Set<string> = new Set()
 
   constructor(ctx: Guwazi) {
     this.ctx = ctx
@@ -55,18 +56,26 @@ export class PluginLoader {
   }
 
   registerPlugin(name: string) {
-    this.list.add(name)
-    setCurrentPluginName(name)
+    try {
+      this.fullList.add(name)
+      setCurrentPluginName(name)
 
-    const pluginConfig = this.ctx.getConfig<boolean>(`guwaziPlugins.${name}`)
-    if (pluginConfig === true || pluginConfig === undefined) {
-      // 未被禁用或者未被注册
-      this.getPlugin(name).register(this.ctx)
+      const pluginConfig = this.ctx.getConfig<boolean>(`guwaziPlugins.${name}`)
+      if (pluginConfig === true || pluginConfig === undefined) {
+        this.list.add(name)
 
-      const plugin = `guwaziPlugins[${name}]`
-      this.ctx.saveConfig({
-        [plugin]: true
-      })
+        // 未被禁用或者未被注册
+        this.getPlugin(name).register(this.ctx)
+
+        const plugin = `guwaziPlugins[${name}]`
+        this.ctx.saveConfig({
+          [plugin]: true
+        })
+      }
+    } catch (err) {
+      this.fullList.delete(name)
+      this.list.delete(name)
+      this.ctx.log.error(err as Error)
     }
   }
 
@@ -77,5 +86,19 @@ export class PluginLoader {
 
   resolvePluginPath(name: string) {
     return path.join(this.ctx.baseDir, 'node_modules', name)
+  }
+
+  /**
+   * Get the list of enabled plugins
+   */
+  getList(): string[] {
+    return [...this.list]
+  }
+
+  /**
+   * Get the full list of plugins, whether it is enabled or not
+   */
+  getFullList(): string[] {
+    return [...this.fullList]
   }
 }
