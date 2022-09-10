@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/ginlink/guwazi-core/compare/v0.1.0...v0.1.1) (2022-09-10)
+
+
+### Features
+
+* add fulllist and config test ([9b74091](https://github.com/ginlink/guwazi-core/commit/9b74091aa14753defe714e60250405ab8b0ef549))
+* add youdao config test ([7120dd8](https://github.com/ginlink/guwazi-core/commit/7120dd8986699676840246cd4f20c493a2ba63a6))
+
 ## 0.1.0 (2022-09-08)
 
 
